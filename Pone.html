@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ToDo List</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="icon" href="icon.png" type="image/x-icon">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+
+
+<body>
+
+
+
+	<div class="container ">
+		<div class="row">
+			<div class=" col-md-12 text-center" style="margin: 140px auto;">
+
+				<h6>ToDo List</h6>
+				<div>
+					<input id="values" type="Text" class="btn btn-outline-danger bg-light form-control ">
+
+					<button id="Add" type="submit" class="btn btn-outline-danger ">
+						<i class="fa fa-plus " style="font-size: 17px;"></i>
+					</button>
+
+					<p id="Errormsg" class="pt-3"></p>
+					<div class="row">
+						<div id="look" class="col-12"></div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<span>Made by @Asma1ll</span>
+	</div>
+</body>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+
+<script>
+
+	var Line = "<div id='Line'> </div>";
+
+	$("#Add").click(function () {
+
+		var UserInput = $('#values').val();
+		if (UserInput === "") {
+
+			document.getElementById("Errormsg").innerHTML = "Field Empty!";
+		}
+		if ($.trim($('#values').val()) == '') {
+			document.getElementById("Errormsg").innerHTML = "Field Empty!";
+		}
+
+		else {
+			document.getElementById("Errormsg").innerHTML = "";
+			var Statment = "<ul  ><li class='hov'><p class='des'><button type ='button' class='btn btn-outline-danger symbol '><span class='glyphicon glyphicon-ok'></span></button>" + UserInput + "<hr></p ></li></ul>"
+			$("#look").prepend(Statment)
+			$('#values').val("");
+
+		}
+	})
+
+	$("#values").keypress(function (e) {
+
+		if (e.which == 13) {
+			var UserInput = $('#values').val();
+			if (UserInput === "") {
+				document.getElementById("Errormsg").innerHTML = "Field Empty!";
+			}
+
+			if ($.trim($('#values').val()) == '') {
+				document.getElementById("Errormsg").innerHTML = "Field Empty!";
+			}
+			else {
+				document.getElementById("Errormsg").innerHTML = "";
+				var Statment = "<ul><li ><p class='des'><button type ='button' class='btn btn-outline-danger symbol '><span class='glyphicon glyphicon-ok'></span></button>" + UserInput + "</p><hr></li></ul>"
+				$("#look").prepend(Statment)
+				$('#values').val("");
+
+			}
+		}
+	})
+
+
+	$(document).on('click', '.symbol', function () {
+
+		$(this).parent().parent().hide();
+
+
+	});
+
+</script>
+
+</html>
